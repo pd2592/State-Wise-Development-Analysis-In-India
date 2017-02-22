@@ -1,0 +1,21 @@
+--mysql commands
+mysql -u root
+
+create database districtdb;
+
+use districtdb;
+
+create table districtnames(name char(30));
+
+grant all privileges on districtdb.* to ''@localhost ;
+
+
+--scoop command
+
+sqoop export --connect jdbc:mysql://localhost:3306/districtdb --table districtnames -m 1 --export-dir /flume_import_out/parsexmlstatedistrictwiseout/
+
+
+--checking data if exist in disrict table
+
+select * from districtnames;
+
